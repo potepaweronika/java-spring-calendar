@@ -1,4 +1,4 @@
-package com.calendar.controller;
+package com.calendar.controller.user;
 
 import com.calendar.model.User;
 import com.calendar.repository.UserDetails;
@@ -14,7 +14,7 @@ public class RegistrationController {
     @GetMapping("/registration")
     public String showRegistrationForm(Model model) {
         model.addAttribute("newUser", new User());
-        return "registration-form";
+        return "user/registration-form";
     }
 
     @PostMapping("/registration")
@@ -22,12 +22,12 @@ public class RegistrationController {
         UserDetails users = new UserDetails();
         if (users.getAllUsers().containsKey(newUser.getUsername())) {
             model.addAttribute("errorMessage", "Username already taken!");
-            return "registration-form";
+            return "user/registration-form";
         } else {
             users.addUser(newUser);
             model.addAttribute("successMessage", "Registration successful!");
             model.addAttribute("newUser", newUser);
-            return "registration-success";
+            return "user/registration-success";
         }
     }
 }

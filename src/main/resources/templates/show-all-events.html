@@ -1,0 +1,36 @@
+<!-- show-all-users.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Show All Events</title>
+</head>
+<body>
+<h2>All Events</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>startDate</th>
+    <th>endDate</th>
+    <th>color</th>
+    <th>location</th>
+    <th>organizer</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="event : ${events}">
+    <td th:text="${event.title}"></td>
+    <td th:text="${event.description}"></td>
+    <td th:text="${event.startDate}"></td>
+    <td th:text="${event.endDate}"></td>
+    <td th:text="${event.color}"></td>
+    <td th:text="${event.location}"></td>
+    <td th:text="${event.organizer}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
