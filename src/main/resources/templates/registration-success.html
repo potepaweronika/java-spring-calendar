@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Successful</title>
+</head>
+<body>
+<h2>Registration Successful!</h2>
+
+<p>Your credentials:</p>
+<p>Username: <span th:text="${newUser.username}"></span></p>
+<p>Email: <span th:text="${newUser.email}"></span></p>
+<p>Password: <span th:text="${newUser.password}"></span></p>
+</body>
+</html>
