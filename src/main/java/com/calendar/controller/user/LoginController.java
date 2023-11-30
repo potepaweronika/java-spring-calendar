@@ -1,4 +1,4 @@
-package com.calendar.controller;
+package com.calendar.controller.user;
 
 import com.calendar.model.User;
 import com.calendar.repository.UserDetails;
@@ -16,7 +16,7 @@ public class LoginController {
     @GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("loginData", new User());
-        return "login-form";
+        return "user/login-form";
     }
 
     @PostMapping("/login")
@@ -32,14 +32,14 @@ public class LoginController {
             if (storedUser.getPassword().equals(password)) {
                 model.addAttribute("successMessage", "User successfully logged in.");
                 model.addAttribute("user", storedUser);
-                return "login-success";
+                return "user/login-success";
             } else {
                 model.addAttribute("errorMessage", "Wrong password!");
-                return "login-form";
+                return "user/login-form";
             }
         } else {
             model.addAttribute("errorMessage", "Wrong username!");
-            return "login-form";
+            return "user/login-form";
         }
     }
 }

@@ -7,7 +7,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Collection;
-import java.util.Map;
 
 @Controller
 public class ShowAllUsersController {
@@ -18,7 +17,7 @@ public class ShowAllUsersController {
         this.userDetails = userDetails;
     }
 
-    @GetMapping("/showAll")
+    @GetMapping("/show-all-users")
     public String showAllUsers(Model model) {
         Collection<User> allUsers = userDetails.getAllUsers().values();
         model.addAttribute("users", allUsers);
