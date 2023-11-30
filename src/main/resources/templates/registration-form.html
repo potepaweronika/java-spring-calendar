@@ -1,26 +1,28 @@
-<!-- login.html -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login Form</title>
+    <title>Registration Form</title>
 </head>
 <body>
-<h2>Login Form</h2>
+<h2>Registration Form</h2>
 
-<form action="/login" method="post" th:object="${loginData}">
+<form action="/registration" method="post" th:object="${newUser}">
     <div>
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" th:field="*{username}" required>
     </div>
-
+    <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" th:field="*{email}" required>
+    </div>
     <div>
         <label for="password">Password:</label>
-        <input type="password" id="password" name="password" th:field="*{password}" required>
+        <input type="text" id="password" name="password" th:field="*{password}" required>
     </div>
 
     <div>
-        <button type="submit">Login</button>
+        <button type="submit">Register</button>
     </div>
 </form>
 

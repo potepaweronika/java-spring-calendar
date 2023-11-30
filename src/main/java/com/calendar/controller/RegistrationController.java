@@ -1,5 +1,7 @@
-package com.calendar;
+package com.calendar.controller;
 
+import com.calendar.model.User;
+import com.calendar.repository.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,19 +13,20 @@ public class RegistrationController {
 
     @GetMapping("/registration")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("userDetails", new UserDetails());
-        return "registration";
+        model.addAttribute("newUser", new User());
+        return "registration-form";
     }
 
     @PostMapping("/registration")
-    public String processRegistration(@ModelAttribute UserDetails userDetails, Model model) {
-        if (userDetails.getAllUsers().containsKey(userDetails.getUsername())) {
+    public String processRegistration(@ModelAttribute User newUser, Model model) {
+        UserDetails users = new UserDetails();
+        if (users.getAllUsers().containsKey(newUser.getUsername())) {
             model.addAttribute("errorMessage", "Username already taken!");
-            return "registration";
+            return "registration-form";
         } else {
-            userDetails.addUser();
+            users.addUser(newUser);
             model.addAttribute("successMessage", "Registration successful!");
-            model.addAttribute("allUsers", userDetails.getAllUsers());
+            model.addAttribute("newUser", newUser);
             return "registration-success";
         }
     }
