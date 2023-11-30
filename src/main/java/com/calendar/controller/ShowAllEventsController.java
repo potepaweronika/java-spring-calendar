@@ -19,8 +19,6 @@ public class ShowAllEventsController {
     @GetMapping("/show-all-events")
     public String showAllEvents(Model model) {
         Collection<Event> allEvents = eventDetails.getAllEvents().values();
-        System.out.println(allEvents);
-        System.out.println(eventDetails.getAllEvents());
         model.addAttribute("events", allEvents);
         return "show-all-events";
     }
