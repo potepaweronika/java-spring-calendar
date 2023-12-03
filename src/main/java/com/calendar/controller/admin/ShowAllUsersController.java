@@ -1,4 +1,4 @@
-package com.calendar.controller;
+package com.calendar.controller.admin;
 
 import com.calendar.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,6 @@ public class ShowAllUsersController {
     @GetMapping("/show-all-users")
     public String showAllUsers(Model model) {
         model.addAttribute("users", userService.getAll());
-        return "show-all-users";
+        return "admin/show-all-users";
     }
 }

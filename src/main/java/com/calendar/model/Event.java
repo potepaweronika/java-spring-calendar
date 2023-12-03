@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "events")
 public class Event {
     @Id
     @GeneratedValue
@@ -19,7 +20,7 @@ public class Event {
     private String color;
     private String location;
     @ManyToOne
-    @JoinColumn(name = "user")
+    @JoinColumn(name = "user_id")
     private User user;
 
 

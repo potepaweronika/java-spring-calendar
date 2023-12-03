@@ -52,9 +52,6 @@ public class CreateEventController {
         // Save the updated user (which will cascade to save the event)
         userService.saveUser(currentUser);
 
-        // Save the event using EventService
-//        eventService.save(event);
-
         // Redirect to a success page or wherever you want
         return "redirect:/";
     }
