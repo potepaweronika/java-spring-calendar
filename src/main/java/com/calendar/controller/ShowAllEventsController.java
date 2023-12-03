@@ -1,25 +1,23 @@
 package com.calendar.controller;
 
-import com.calendar.model.Event;
-import com.calendar.repository.EventDetails;
+import com.calendar.services.event.EventService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Collection;
-
 @Controller
 public class ShowAllEventsController {
-    private final EventDetails eventDetails;
+    private final EventService eventService;
 
-    public ShowAllEventsController(EventDetails eventDetails) {
-        this.eventDetails = eventDetails;
+    @Autowired
+    public ShowAllEventsController(EventService eventService) {
+        this.eventService = eventService;
     }
 
     @GetMapping("/show-all-events")
     public String showAllEvents(Model model) {
-        Collection<Event> allEvents = eventDetails.getAllEvents().values();
-        model.addAttribute("events", allEvents);
+        model.addAttribute("events", eventService.getAll());
         return "show-all-events";
     }
 }

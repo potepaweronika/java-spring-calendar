@@ -1,26 +1,26 @@
 package com.calendar.controller;
 
-import com.calendar.model.User;
-import com.calendar.repository.UserDetails;
+import com.calendar.services.user.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Collection;
-
 @Controller
+@PreAuthorize("hasRole('ADMIN')")
 public class ShowAllUsersController {
+    private final UserService userService;
 
-    private final UserDetails userDetails;
-
-    public ShowAllUsersController(UserDetails userDetails) {
-        this.userDetails = userDetails;
+    @Autowired
+    public ShowAllUsersController(UserService userService) {
+        this.userService = userService;
     }
+
 
     @GetMapping("/show-all-users")
     public String showAllUsers(Model model) {
-        Collection<User> allUsers = userDetails.getAllUsers().values();
-        model.addAttribute("users", allUsers);
+        model.addAttribute("users", userService.getAll());
         return "show-all-users";
     }
 }
