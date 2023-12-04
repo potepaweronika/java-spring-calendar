@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Delete Profile</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<style>
+    .navbar {
+        background-color: green;
+    }
+</style>
+
+<body>
+
+<!-- create navigation bar ( header) -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                Calendar App </a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a th:href="@{/profile}">Profile</a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<br><br><br><br><br><br><br>
+<!-- Create HTML delete profile form -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <!-- success message -->
+            <div th:if="${param.success}">
+                <div class="alert alert-info">You've successfully deleted profile!</div>
+            </div>
+
+            <h1>Delete Profile</h1>
+
+            <form th:action="@{/delete-user/{userId}(userId=${user.id})}" method="post" th:object="${user}">
+                <div class="form-group">
+                    <p class="control-label">First Name: <label th:text="${user.firstName}"></label></p>
+                </div>
+                <div class="form-group">
+                    <p class="control-label">Last Name: <label th:text="${user.lastName}"></label></p>
+                </div>
+                <div class="form-group">
+                    <p class="control-label">Email: <label th:text="${user.email}"></label></p>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">Are you sure you want to delete profile?</label><br>
+                    <button class="btn btn-danger" type="submit">Delete Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

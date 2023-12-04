@@ -1,0 +1,63 @@
+<!-- show-all-events.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Show All Events</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<style>
+    .navbar {
+        background-color: green;
+    }
+</style>
+
+<body>
+
+<!-- create navigation bar ( header) -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                Calendar App </a>
+        </div>
+    </div>
+</nav>
+
+<br><br><br><br><br><br><br>
+<div class="container-fluid">
+
+    <h1>All Events</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Color</th>
+            <th>Location</th>
+            <th>User's Email</th>
+        </tr>
+        <tr th:each="event : ${events}">
+            <td th:text="${event.title}"></td>
+            <td th:text="${event.description}"></td>
+            <td th:text="${event.startDate}"></td>
+            <td th:text="${event.endDate}"></td>
+            <td th:text="${event.color}"></td>
+            <td th:text="${event.location}"></td>
+            <td th:text="${event.user.email}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

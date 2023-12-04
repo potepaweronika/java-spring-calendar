@@ -2,7 +2,7 @@
 <html xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Create Event Form</title>
+    <title>Delete Event</title>
 
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -51,43 +51,34 @@
 
             <!-- success message -->
             <div th:if="${param.success}">
-                <div class="alert alert-info">You've successfully created new event!</div>
+                <div class="alert alert-info">You've successfully deleted event!</div>
             </div>
 
-            <h1>Create Event Form</h1>
+            <h1>Delete Event</h1>
 
-            <form th:action="@{/create-event}" method="post" th:object="${event}">
+            <form th:action="@{/delete-event/{eventId}(eventId=${event.id})}" method="post" th:object="${event}">
                 <div class="form-group">
-                    <label class="control-label" for="title">Title:</label>
-                    <input id="title" class="form-control" th:field="*{title}" required autofocus="autofocus">
+                    <p class="control-label">Title: <label th:text="${event.title}"></label></p>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="description">Description:</label>
-                    <input type="text" id="description" class="form-control" name="description"
-                           th:field="*{description}">
+                    <p class="control-label">Description: <label th:text="${event.description}"></label></p>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="startDate">Start Date:</label>
-                    <input type="datetime-local" id="startDate" class="form-control" name="startDate"
-                           th:field="*{startDate}"
-                           pattern="yyyy-MM-dd'T'HH:mm" required>
+                    <p class="control-label">Start Date: <label th:text="${event.startDate}"></label></p>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="endDate">End Date:</label>
-                    <input type="datetime-local" id="endDate" class="form-control" name="endDate" th:field="*{endDate}"
-                           pattern="yyyy-MM-dd'T'HH:mm" required>
+                    <p class="control-label">End Date: <label th:text="${event.endDate}"></label></p>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="color">Color:</label>
-                    <input type="text" id="color" class="form-control" name="color" th:field="*{color}">
+                    <p class="control-label">Color: <label th:text="${event.color}"></label></p>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="location">Location:</label>
-                    <input type="text" id="location" class="form-control" name="location" th:field="*{location}">
+                    <p class="control-label">Location: <label th:text="${event.location}"></label></p>
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Add Event</button>
+                    <label class="control-label">Are you sure you want to delete event?</label><br>
+                    <button class="btn btn-danger" type="submit">Delete Event</button>
                 </div>
             </form>
         </div>

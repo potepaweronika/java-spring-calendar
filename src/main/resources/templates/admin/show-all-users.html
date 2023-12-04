@@ -1,0 +1,57 @@
+<!-- show-all-users.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Show All Users</title>
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+</head>
+<style>
+    .navbar {
+        background-color: green;
+    }
+</style>
+
+<body>
+
+<!-- create navigation bar ( header) -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                Calendar App </a>
+        </div>
+    </div>
+</nav>
+
+<br><br><br><br><br><br><br>
+<div class="container">
+
+    <h1>Show All Users Page</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>User</th>
+            <th>Events</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.email}"></td>
+            <td>
+                <ul>
+                    <li th:each="event : ${user.events}" th:text="${event.title}"></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
