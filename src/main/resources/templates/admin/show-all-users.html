@@ -37,21 +37,21 @@
 <br><br><br><br><br><br><br>
 <div class="container">
 
-            <h1>Show All Users Page</h1>
-            <table class="table table-striped">
-                <tr>
-                    <th>User</th>
-                    <th>Events</th>
-                </tr>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.email}"></td>
-                    <td>
-                        <ul>
-                            <li th:each="event : ${user.events}" th:text="${event.title}"></li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
+    <h1>Show All Users Page</h1>
+    <table class="table table-striped">
+        <tr>
+            <th>User</th>
+            <th>Events</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.email}"></td>
+            <td>
+                <ul>
+                    <li th:each="event : ${user.events}" th:text="${event.title}"></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
 </div>
 </body>
 </html>

@@ -27,7 +27,7 @@
                 <span class="icon-bar"></span> <span
                     class="icon-bar"></span> <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/" >
+            <a class="navbar-brand" href="/">
                 Calendar App </a>
         </div>
     </div>
@@ -52,32 +52,32 @@
                     <input id="title" class="form-control" th:field="*{title}" required autofocus="autofocus">
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="description">description:</label>
+                    <label class="control-label" for="description">Description:</label>
                     <input type="text" id="description" class="form-control" name="description"
                            th:field="*{description}">
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="startDate">startDate:</label>
+                    <label class="control-label" for="startDate">Start Date:</label>
                     <input type="datetime-local" id="startDate" class="form-control" name="startDate"
                            th:field="*{startDate}"
                            pattern="yyyy-MM-dd'T'HH:mm" required>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="endDate">endDate:</label>
+                    <label class="control-label" for="endDate">End Date:</label>
                     <input type="datetime-local" id="endDate" class="form-control" name="endDate" th:field="*{endDate}"
                            pattern="yyyy-MM-dd'T'HH:mm" required>
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="color">color:</label>
+                    <label class="control-label" for="color">Color:</label>
                     <input type="text" id="color" class="form-control" name="color" th:field="*{color}">
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="location">location:</label>
+                    <label class="control-label" for="location">Location:</label>
                     <input type="text" id="location" class="form-control" name="location" th:field="*{location}">
                 </div>
 
                 <div class="form-group">
-                    <button type="submit">Add Event</button>
+                    <button class="btn btn-primary" type="submit">Add Event</button>
                 </div>
             </form>
         </div>
