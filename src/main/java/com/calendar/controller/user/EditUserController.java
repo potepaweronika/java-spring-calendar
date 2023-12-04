@@ -31,7 +31,9 @@ public class EditUserController {
     }
 
     @GetMapping
-    public String showEditUserForm() { return "user/edit-user-form"; }
+    public String showEditUserForm() {
+        return "user/edit-user-form";
+    }
 
     @PostMapping
     public String editUser(@ModelAttribute("user") User user) {

@@ -37,7 +37,9 @@ public class DeleteUserController {
     }
 
     @GetMapping
-    public String showDeleteUserForm() { return "user/delete-user"; }
+    public String showDeleteUserForm() {
+        return "user/delete-user";
+    }
 
     @PostMapping
     public String deleteUser(@ModelAttribute("user") User user, HttpServletRequest request) {

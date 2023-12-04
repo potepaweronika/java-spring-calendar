@@ -1,6 +1,7 @@
 package com.calendar.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -21,7 +22,7 @@ public class User {
 
     private String password;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Event> events;
+    private List<Event> events = new ArrayList<>();
 
 
     @ManyToMany(fetch = FetchType.EAGER,
