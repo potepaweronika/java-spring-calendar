@@ -12,7 +12,7 @@ public interface EventService {
 
     List<Event> getAll();
 
-//    public default  Collection<Event> findAllForUser(User user) {
-//        return eventRepository.findAllForUser(user);
-//    }
+    Event findById(Long eventId);
+
+    void delete(Event event);
 }

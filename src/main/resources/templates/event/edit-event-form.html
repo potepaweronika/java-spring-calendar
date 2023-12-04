@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Create Event Form</title>
+    <title>Edit Event Form</title>
 
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -41,12 +41,12 @@
 
             <!-- success message -->
             <div th:if="${param.success}">
-                <div class="alert alert-info">You've successfully created new event!</div>
+                <div class="alert alert-info">You've successfully edited event!</div>
             </div>
 
-            <h1>Create Event Form</h1>
+            <h1>Edit Event Form</h1>
 
-            <form th:action="@{/create-event}" method="post" th:object="${event}">
+            <form th:action="@{/edit-event/{eventId}(eventId=${event.id})}" method="post" th:object="${event}">
                 <div class="form-group">
                     <label class="control-label" for="title">Title:</label>
                     <input id="title" class="form-control" th:field="*{title}" required autofocus="autofocus">
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Add Event</button>
+                    <button class="btn btn-primary" type="submit">Edit Event</button>
                 </div>
             </form>
         </div>

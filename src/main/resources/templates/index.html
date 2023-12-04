@@ -47,24 +47,32 @@
     <a class="btn btn-primary" th:href="@{/create-event}">Create New Event</a>
 </div>
 <br><br>
-<div class="container">
-    <p>Username: <a th:text="${user.email}"></a></p>
-</div>
-<div class="container-fluid">
+<div class="container-fluid mx-auto">
     <th:block th:if="${not #lists.isEmpty(user.events)}">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Title</th>
-                <th>Start Date</th>
-                <th>End Date</th>
+                <th class="text-center">Title</th>
+                <th class="text-center">Description</th>
+                <th class="text-center">Start Date</th>
+                <th class="text-center">End Date</th>
+                <th class="text-center">Color</th>
+                <th class="text-center">Location</th>
+                <th class="text-center">Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="event : ${user.events}">
-                <td th:text="${event.title}"></td>
-                <td th:text="${event.startDate}"></td>
-                <td th:text="${event.endDate}"></td>
+                <td class="text-center" th:text="${event.title}"></td>
+                <td class="text-center" th:text="${event.description}"></td>
+                <td class="text-center" th:text="${event.startDate}"></td>
+                <td class="text-center" th:text="${event.endDate}"></td>
+                <td class="text-center" th:text="${event.color}"></td>
+                <td class="text-center" th:text="${event.location}"></td>
+                <td class="text-center">
+                    <a class="btn btn-primary" th:href="@{/edit-event/{eventId}(eventId=${event.id})}">Edit Event</a>
+                    <a class="btn btn-danger" th:href="@{/delete-event/{eventId}(eventId=${event.id})}">Delete Event</a>
+                </td>
             </tr>
             </tbody>
         </table>
