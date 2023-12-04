@@ -27,7 +27,7 @@ public class DeleteEventController {
     }
 
     @PostMapping
-    public String editEvent(@ModelAttribute("event") Event event) {
+    public String deleteEvent(@ModelAttribute("event") Event event) {
         // Save changes made to event
         eventService.delete(event);
 

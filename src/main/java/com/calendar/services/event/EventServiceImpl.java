@@ -38,4 +38,6 @@ public class EventServiceImpl implements EventService {
     public void delete(Event event) {
         eventRepository.delete(event);
     }
+
+
 }

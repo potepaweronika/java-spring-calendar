@@ -2,7 +2,7 @@
 <html xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Delete Event</title>
+    <title>Delete Profile</title>
 
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -44,41 +44,32 @@
 </nav>
 
 <br><br><br><br><br><br><br>
-<!-- Create HTML create new event form -->
+<!-- Create HTML delete profile form -->
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
 
             <!-- success message -->
             <div th:if="${param.success}">
-                <div class="alert alert-info">You've successfully deleted event!</div>
+                <div class="alert alert-info">You've successfully deleted profile!</div>
             </div>
 
-            <h1>Delete Event</h1>
+            <h1>Delete Profile</h1>
 
-            <form th:action="@{/delete-event/{eventId}(eventId=${event.id})}" method="post" th:object="${event}">
+            <form th:action="@{/delete-user/{userId}(userId=${user.id})}" method="post" th:object="${user}">
                 <div class="form-group">
-                    <p class="control-label">Title: <label th:text="${event.title}"></label></p>
+                    <p class="control-label">First Name: <label th:text="${user.firstName}"></label></p>
                 </div>
                 <div class="form-group">
-                    <p class="control-label">Description: <label th:text="${event.description}"></label></p>
+                    <p class="control-label">Last Name: <label th:text="${user.lastName}"></label></p>
                 </div>
                 <div class="form-group">
-                    <p class="control-label">Start Date: <label th:text="${event.startDate}"></label></p>
-                </div>
-                <div class="form-group">
-                    <p class="control-label">End Date: <label th:text="${event.endDate}"></label></p>
-                </div>
-                <div class="form-group">
-                    <p class="control-label">Color: <label th:text="${event.color}"></label></p>
-                </div>
-                <div class="form-group">
-                    <p class="control-label">Location: <label th:text="${event.location}"></label></p>
+                    <p class="control-label">Email: <label th:text="${user.email}"></label></p>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label">Are you sure you want to delete event?</label><br>
-                    <button class="btn btn-danger" type="submit">Delete Event</button>
+                    <label class="control-label">Are you sure you want to delete profile?</label><br>
+                    <button class="btn btn-danger" type="submit">Delete Profile</button>
                 </div>
             </form>
         </div>
