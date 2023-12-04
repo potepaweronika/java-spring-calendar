@@ -8,13 +8,16 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class HomeController {
-    private final UserService userService;
+@RequestMapping("/edit-user/{userId}")
+public class EditUserController {
+    public final UserService userService;
 
     @Autowired
-    public HomeController(UserService userService) {
+    public EditUserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -27,13 +30,12 @@ public class HomeController {
         return userService.findByEmail(currentUserEmail);
     }
 
-    @GetMapping("/")
-    public String home() {
-        return "index";
-    }
+    @GetMapping
+    public String showEditUserForm() { return "user/edit-user-form"; }
 
-    @GetMapping("/profile")
-    public String profile() {
-        return "user/profile";
+    @PostMapping
+    public String editUser(@ModelAttribute("user") User user) {
+        userService.saveUser(user);
+        return "redirect:/";
     }
 }

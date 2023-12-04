@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Access Denied</title>
+    <title>Profile</title>
 
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -47,8 +47,16 @@
 
 <br><br><br><br>
 <div class="container">
-    <div class="alert alert-danger">
-        <strong>Denied!</strong> Sorry you don't have access to this page.
+    <div class="text-center">
+        <h2>Profile's Information:</h2>
+        <p>First Name: <label th:text="${user.firstName}"></label></p>
+        <p>Last Name: <label th:text="${user.lastName}"></label></p>
+        <p>Email: <label th:text="${user.email}"></label></p>
+    </div>
+
+    <div class="text-center">
+        <a class="btn btn-primary" th:href="@{/edit-user/{userId}(userId=${user.id})}">Edit Profile</a>
+        <a class="btn btn-danger" th:href="@{/delete-user/{userId}(userId=${user.id})}">Delete Profile</a>
     </div>
 </div>
 <input type="hidden" th:name="${_csrf.parameterName}"

@@ -2,7 +2,7 @@
 <html xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="ISO-8859-1">
-    <title>Login Form</title>
+    <title>Delete Event</title>
 
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -44,56 +44,43 @@
 </nav>
 
 <br><br><br><br><br><br><br>
+<!-- Create HTML create new event form -->
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
 
-            <h1>User Login Page</h1>
-            <form th:action="@{/login}" method="post">
+            <!-- success message -->
+            <div th:if="${param.success}">
+                <div class="alert alert-info">You've successfully deleted event!</div>
+            </div>
 
-                <!-- error message -->
-                <div th:if="${param.error}">
-                    <div class="alert alert-danger">Invalid username or
-                        password.
-                    </div>
+            <h1>Delete Event</h1>
+
+            <form th:action="@{/delete-event/{eventId}(eventId=${event.id})}" method="post" th:object="${event}">
+                <div class="form-group">
+                    <p class="control-label">Title: <label th:text="${event.title}"></label></p>
                 </div>
-
-                <!-- logout message -->
-                <div th:if="${param.logout}">
-                    <div class="alert alert-info">
-                        You have been logged out.
-                    </div>
+                <div class="form-group">
+                    <p class="control-label">Description: <label th:text="${event.description}"></label></p>
+                </div>
+                <div class="form-group">
+                    <p class="control-label">Start Date: <label th:text="${event.startDate}"></label></p>
+                </div>
+                <div class="form-group">
+                    <p class="control-label">End Date: <label th:text="${event.endDate}"></label></p>
+                </div>
+                <div class="form-group">
+                    <p class="control-label">Color: <label th:text="${event.color}"></label></p>
+                </div>
+                <div class="form-group">
+                    <p class="control-label">Location: <label th:text="${event.location}"></label></p>
                 </div>
 
                 <div class="form-group">
-                    <label for="username"> Email </label> :
-                    <input type="text" class="form-control" id="username"
-                           name="username" placeholder="Enter Email"
-                           autofocus="autofocus">
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Password</label>:
-                    <input type="password" id="password" name="password"
-                           class="form-control" placeholder="Enter Password"/>
-                </div>
-
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-sm-6 col-sm-offset-3">
-                            <input type="submit" name="login-submit"
-                                   id="login-submit"
-                                   class="form-control btn btn-primary"
-                                   value="Log In"/>
-                        </div>
-                    </div>
+                    <label class="control-label">Are you sure you want to delete event?</label><br>
+                    <button class="btn btn-danger" type="submit">Delete Event</button>
                 </div>
             </form>
-            <div class="form-group">
-                    <span>New user? <a href="/static" th:href="@{/registration}">
-                Register
-                  here</a></span>
-            </div>
         </div>
     </div>
 </div>
