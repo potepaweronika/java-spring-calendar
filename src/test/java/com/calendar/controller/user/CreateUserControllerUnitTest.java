@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.validation.BeanPropertyBindingResult;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
@@ -41,7 +42,7 @@ class CreateUserControllerUnitTest {
         UserCreationDto creationDto = new UserCreationDto();
 
         // Act
-        String result = createUserController.createUser(creationDto);
+        String result = createUserController.createUser(creationDto, new BeanPropertyBindingResult(creationDto, "user"));
 
         // Assert
         assertEquals("redirect:/registration?success", result);

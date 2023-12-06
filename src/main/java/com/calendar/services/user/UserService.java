@@ -18,4 +18,6 @@ public interface UserService extends UserDetailsService {
     void saveUser(User user);
 
     void delete(User user);
+
+    boolean emailExists(String email);
 }
