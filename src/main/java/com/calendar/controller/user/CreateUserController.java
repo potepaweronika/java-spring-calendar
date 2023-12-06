@@ -4,20 +4,17 @@ import com.calendar.dto.UserRegistrationDto;
 import com.calendar.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
 @RequestMapping("/registration")
-public class RegistrationController {
+public class CreateUserController {
 
     private final UserService userService;
 
     @Autowired
-    public RegistrationController(UserService userService) {
+    public CreateUserController(UserService userService) {
         super();
         this.userService = userService;
     }
@@ -33,7 +30,7 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public String registerUserAccount(@ModelAttribute("user")
+    public String registerUserAccount(@RequestBody
                                       UserRegistrationDto registrationDto) {
 
         userService.save(registrationDto);
