@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class Event {
     @Id
     @GeneratedValue
-    private Long id;
+    private Long id;        // TODO: Add server-side validation
     private String title;
     private String description;
     @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")

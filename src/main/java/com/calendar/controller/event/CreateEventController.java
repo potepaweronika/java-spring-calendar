@@ -34,7 +34,7 @@ public class CreateEventController {
 
     @GetMapping
     public String showCreateEventForm() {
-        return "event/create-event-form";
+        return "event/create-event";
     }
 
     @PostMapping

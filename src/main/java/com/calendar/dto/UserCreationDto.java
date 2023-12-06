@@ -1,12 +1,12 @@
 package com.calendar.dto;
 
-public class UserRegistrationDto {
+public class UserCreationDto {
     private String firstName;
     private String lastName;
     private String email;
     private String password;
 
-    public UserRegistrationDto() {
+    public UserCreationDto() {
 
     }
 

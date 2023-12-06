@@ -32,7 +32,7 @@ public class EditUserController {
 
     @GetMapping
     public String showEditUserForm() {
-        return "user/edit-user-form";
+        return "user/edit-user";
     }
 
     @PostMapping
