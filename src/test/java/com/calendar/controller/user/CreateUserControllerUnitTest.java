@@ -1,6 +1,6 @@
 package com.calendar.controller.user;
 
-import com.calendar.dto.UserRegistrationDto;
+import com.calendar.dto.UserCreationDto;
 import com.calendar.services.user.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,13 +12,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-class RegistrationControllerTest {
+class CreateUserControllerTest {
 
     @Mock
     private UserService userService;
 
     @InjectMocks
-    private RegistrationController registrationController;
+    private CreateUserController createUserController;
 
     @BeforeEach
     void setUp() {
@@ -27,24 +27,24 @@ class RegistrationControllerTest {
     }
 
     @Test
-    void showRegistrationForm() {
+    void showCreateUserForm() {
         // Act
-        String result = registrationController.showRegistrationForm();
+        String result = createUserController.showCreateUserForm();
 
         // Assert
         assertEquals("user/registration", result);
     }
 
     @Test
-    void registerUserAccount_Success() {
+    void createNewUser_Success() {
         // Arrange
-        UserRegistrationDto registrationDto = new UserRegistrationDto();
+        UserCreationDto creationDto = new UserCreationDto();
 
         // Act
-        String result = registrationController.registerUserAccount(registrationDto);
+        String result = createUserController.createUser(creationDto);
 
         // Assert
         assertEquals("redirect:/registration?success", result);
-        verify(userService, times(1)).save(registrationDto);
+        verify(userService, times(1)).save(creationDto);
     }
 }

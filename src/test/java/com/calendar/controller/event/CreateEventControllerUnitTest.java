@@ -15,7 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class CreateEventControllerTest {
+class CreateEventControllerUnitTest {
     @Mock
     private EventService eventService;
     @InjectMocks
@@ -30,16 +30,16 @@ class CreateEventControllerTest {
     }
 
     @Test
-    void showCreateEventForm() {
+    void showCreateEventForm_UnitTest() {
         // Act
         String result = createEventController.showCreateEventForm();
 
         // Assert
-        assertEquals("event/create-event-form", result);
+        assertEquals("event/create-event", result);
     }
 
     @Test
-    void createNewEvent_Success() {
+    void createNewEvent_UnitTest_Success() {
         // Arrange
         Event event = new Event();
 
