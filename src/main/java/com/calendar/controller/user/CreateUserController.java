@@ -1,10 +1,13 @@
 package com.calendar.controller.user;
 
-import com.calendar.dto.UserRegistrationDto;
+import com.calendar.dto.UserCreationDto;
 import com.calendar.services.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
@@ -20,20 +23,19 @@ public class CreateUserController {
     }
 
     @ModelAttribute("user")
-    public UserRegistrationDto userRegistrationDto() {
-        return new UserRegistrationDto();
+    public UserCreationDto userCreationDto() {
+        return new UserCreationDto();
     }
 
     @GetMapping
-    public String showRegistrationForm() {
-        return "user/registration";
+    public String showCreateUserForm() {
+        return "user/create-user";
     }
 
     @PostMapping
-    public String registerUserAccount(@RequestBody
-                                      UserRegistrationDto registrationDto) {
+    public String createUser(@ModelAttribute("user") UserCreationDto creationDto) {
+        userService.save(creationDto);
 
-        userService.save(registrationDto);
         return "redirect:/registration?success";
     }
 }

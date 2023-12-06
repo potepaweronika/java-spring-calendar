@@ -10,7 +10,7 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;        // TODO: Add server-side validation
 
     @Column(name = "first_name")
     private String firstName;

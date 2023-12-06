@@ -1,6 +1,6 @@
 package com.calendar.services.user;
 
-import com.calendar.dto.UserRegistrationDto;
+import com.calendar.dto.UserCreationDto;
 import com.calendar.model.Role;
 import com.calendar.model.User;
 import com.calendar.repository.UserRepository;
@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void save(UserRegistrationDto registrationDto) {
+    public void save(UserCreationDto registrationDto) {
         User user = new User(registrationDto.getFirstName(),
                 registrationDto.getLastName(),
                 registrationDto.getEmail(),

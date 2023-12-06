@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-class CreateUserControllerTest {
+class CreateUserControllerUnitTest {
 
     @Mock
     private UserService userService;
@@ -27,16 +27,16 @@ class CreateUserControllerTest {
     }
 
     @Test
-    void showCreateUserForm() {
+    void showCreateUserForm_UnitTest() {
         // Act
         String result = createUserController.showCreateUserForm();
 
         // Assert
-        assertEquals("user/registration", result);
+        assertEquals("user/create-user", result);
     }
 
     @Test
-    void createNewUser_Success() {
+    void createNewUser_UnitTest_Success() {
         // Arrange
         UserCreationDto creationDto = new UserCreationDto();
 

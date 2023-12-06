@@ -23,7 +23,7 @@ public class EditEventController {
 
     @GetMapping
     public String showEditEventForm() {
-        return "event/edit-event-form";
+        return "event/edit-event";
     }
 
     @PostMapping
